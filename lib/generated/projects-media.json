@@ -1,0 +1,813 @@
+[
+  {
+    "id": "front-elevation-01-1-3-photo-2",
+    "category": "front-elevation",
+    "kind": "image",
+    "src": "/assets/img/projects/front-elevation/01-1-3-photo-2.jpg",
+    "alt": "Front Elevation — photo 1",
+    "width": 2200,
+    "height": 1381
+  },
+  {
+    "id": "front-elevation-02-1-3-photo-1",
+    "category": "front-elevation",
+    "kind": "image",
+    "src": "/assets/img/projects/front-elevation/02-1-3-photo-1.jpg",
+    "alt": "Front Elevation — photo 2",
+    "width": 2200,
+    "height": 1305
+  },
+  {
+    "id": "front-elevation-03-6-8-photo",
+    "category": "front-elevation",
+    "kind": "image",
+    "src": "/assets/img/projects/front-elevation/03-6-8-photo.jpg",
+    "alt": "Front Elevation — photo 3",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "front-elevation-07-design-for-house-101",
+    "category": "front-elevation",
+    "kind": "image",
+    "src": "/assets/img/projects/front-elevation/07-design-for-house-101.jpg",
+    "alt": "Front Elevation — photo 7",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "front-elevation-08-fb-img-1782568380788",
+    "category": "front-elevation",
+    "kind": "image",
+    "src": "/assets/img/projects/front-elevation/08-fb-img-1782568380788.jpg",
+    "alt": "Front Elevation — photo 8",
+    "width": 1216,
+    "height": 1294
+  },
+  {
+    "id": "front-elevation-09-front-elevation-3",
+    "category": "front-elevation",
+    "kind": "image",
+    "src": "/assets/img/projects/front-elevation/09-front-elevation-3.jpg",
+    "alt": "Front Elevation — photo 9",
+    "width": 1600,
+    "height": 900
+  },
+  {
+    "id": "front-elevation-10-img-20230921-wa0003",
+    "category": "front-elevation",
+    "kind": "image",
+    "src": "/assets/img/projects/front-elevation/10-img-20230921-wa0003.jpg",
+    "alt": "Front Elevation — photo 10",
+    "width": 1600,
+    "height": 1028
+  },
+  {
+    "id": "front-elevation-11-img-20240514-wa0009",
+    "category": "front-elevation",
+    "kind": "image",
+    "src": "/assets/img/projects/front-elevation/11-img-20240514-wa0009.jpg",
+    "alt": "Front Elevation — photo 11",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "front-elevation-12-img-2944",
+    "category": "front-elevation",
+    "kind": "image",
+    "src": "/assets/img/projects/front-elevation/12-img-2944.jpg",
+    "alt": "Front Elevation — photo 12",
+    "width": 2200,
+    "height": 1328
+  },
+  {
+    "id": "front-elevation-13-img-5316",
+    "category": "front-elevation",
+    "kind": "image",
+    "src": "/assets/img/projects/front-elevation/13-img-5316.jpg",
+    "alt": "Front Elevation — photo 13",
+    "width": 2048,
+    "height": 1154
+  },
+  {
+    "id": "front-elevation-14-img-7567",
+    "category": "front-elevation",
+    "kind": "image",
+    "src": "/assets/img/projects/front-elevation/14-img-7567.jpg",
+    "alt": "Front Elevation — photo 14",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "front-elevation-15-img-7571",
+    "category": "front-elevation",
+    "kind": "image",
+    "src": "/assets/img/projects/front-elevation/15-img-7571.jpg",
+    "alt": "Front Elevation — photo 15",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "front-elevation-16-old-house-101",
+    "category": "front-elevation",
+    "kind": "image",
+    "src": "/assets/img/projects/front-elevation/16-old-house-101.jpg",
+    "alt": "Front Elevation — photo 16",
+    "width": 1650,
+    "height": 2200
+  },
+  {
+    "id": "front-elevation-17-front-elevation-renovation-project",
+    "category": "front-elevation",
+    "kind": "video",
+    "src": "/assets/video/projects/front-elevation/17-front-elevation-renovation-project.mp4",
+    "poster": "/assets/img/projects/front-elevation/17-front-elevation-renovation-project-poster.jpg",
+    "alt": "Front Elevation — video 17",
+    "width": 1024,
+    "height": 576,
+    "sizeMB": 6,
+    "featured": false
+  },
+  {
+    "id": "front-elevation-18-front-elevation-2",
+    "category": "front-elevation",
+    "kind": "video",
+    "src": "/assets/video/projects/front-elevation/18-front-elevation-2.mp4",
+    "poster": "/assets/img/projects/front-elevation/18-front-elevation-2-poster.jpg",
+    "alt": "Front Elevation — video 18",
+    "width": 1024,
+    "height": 576,
+    "sizeMB": 7,
+    "featured": false
+  },
+  {
+    "id": "front-elevation-20-img-3722-1",
+    "category": "front-elevation",
+    "kind": "video",
+    "src": "/assets/video/projects/front-elevation/20-img-3722-1.mp4",
+    "poster": "/assets/img/projects/front-elevation/20-img-3722-1-poster.jpg",
+    "alt": "Front Elevation — video 20",
+    "width": 1280,
+    "height": 720,
+    "sizeMB": 7,
+    "featured": false
+  },
+  {
+    "id": "front-elevation-21-img-4142",
+    "category": "front-elevation",
+    "kind": "video",
+    "src": "/assets/video/projects/front-elevation/21-img-4142.mp4",
+    "poster": "/assets/img/projects/front-elevation/21-img-4142-poster.jpg",
+    "alt": "Front Elevation — video 21",
+    "width": 1280,
+    "height": 720,
+    "sizeMB": 12,
+    "featured": false
+  },
+  {
+    "id": "front-elevation-26-mansion",
+    "category": "front-elevation",
+    "kind": "video",
+    "src": "/assets/video/projects/front-elevation/26-mansion.mp4",
+    "poster": "/assets/img/projects/front-elevation/26-mansion-poster.jpg",
+    "alt": "Front Elevation — video 26",
+    "width": 1600,
+    "height": 900,
+    "sizeMB": 13,
+    "featured": true,
+    "featuredOrder": 1
+  },
+  {
+    "id": "modern-bedroom-01-1",
+    "category": "modern-bedroom",
+    "kind": "image",
+    "src": "/assets/img/projects/modern-bedroom/01-1.jpg",
+    "alt": "Modern Bedroom — photo 1",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "modern-bedroom-02-1-1-photo-1",
+    "category": "modern-bedroom",
+    "kind": "image",
+    "src": "/assets/img/projects/modern-bedroom/02-1-1-photo-1.jpg",
+    "alt": "Modern Bedroom — photo 2",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "modern-bedroom-03-1-3-photo",
+    "category": "modern-bedroom",
+    "kind": "image",
+    "src": "/assets/img/projects/modern-bedroom/03-1-3-photo.jpg",
+    "alt": "Modern Bedroom — photo 3",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "modern-bedroom-04-1-4-photo",
+    "category": "modern-bedroom",
+    "kind": "image",
+    "src": "/assets/img/projects/modern-bedroom/04-1-4-photo.jpg",
+    "alt": "Modern Bedroom — photo 4",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "modern-bedroom-05-1-5-photo-1",
+    "category": "modern-bedroom",
+    "kind": "image",
+    "src": "/assets/img/projects/modern-bedroom/05-1-5-photo-1.jpg",
+    "alt": "Modern Bedroom — photo 5",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "modern-bedroom-06-26934e43f5f4f37b1120c332ecaa0ace",
+    "category": "modern-bedroom",
+    "kind": "image",
+    "src": "/assets/img/projects/modern-bedroom/06-26934e43f5f4f37b1120c332ecaa0ace.jpg",
+    "alt": "Modern Bedroom — photo 6",
+    "width": 736,
+    "height": 920
+  },
+  {
+    "id": "modern-bedroom-07-img-20231026-wa0038",
+    "category": "modern-bedroom",
+    "kind": "image",
+    "src": "/assets/img/projects/modern-bedroom/07-img-20231026-wa0038.jpg",
+    "alt": "Modern Bedroom — photo 7",
+    "width": 1600,
+    "height": 900
+  },
+  {
+    "id": "modern-bedroom-09-img-20260910-wa0141",
+    "category": "modern-bedroom",
+    "kind": "image",
+    "src": "/assets/img/projects/modern-bedroom/09-img-20260910-wa0141.jpg",
+    "alt": "Modern Bedroom — photo 9",
+    "width": 1600,
+    "height": 900
+  },
+  {
+    "id": "modern-bedroom-10-img-20260910-wa0142",
+    "category": "modern-bedroom",
+    "kind": "image",
+    "src": "/assets/img/projects/modern-bedroom/10-img-20260910-wa0142.jpg",
+    "alt": "Modern Bedroom — photo 10",
+    "width": 1600,
+    "height": 900
+  },
+  {
+    "id": "modern-bedroom-11-img-20260910-wa0161",
+    "category": "modern-bedroom",
+    "kind": "image",
+    "src": "/assets/img/projects/modern-bedroom/11-img-20260910-wa0161.jpg",
+    "alt": "Modern Bedroom — photo 11",
+    "width": 2200,
+    "height": 1388
+  },
+  {
+    "id": "modern-bedroom-12-img-20260910-wa0178",
+    "category": "modern-bedroom",
+    "kind": "image",
+    "src": "/assets/img/projects/modern-bedroom/12-img-20260910-wa0178.jpg",
+    "alt": "Modern Bedroom — photo 12",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "modern-bedroom-13-img-20260910-wa0180",
+    "category": "modern-bedroom",
+    "kind": "image",
+    "src": "/assets/img/projects/modern-bedroom/13-img-20260910-wa0180.jpg",
+    "alt": "Modern Bedroom — photo 13",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "modern-bedroom-14-img-20260910-wa0182",
+    "category": "modern-bedroom",
+    "kind": "image",
+    "src": "/assets/img/projects/modern-bedroom/14-img-20260910-wa0182.jpg",
+    "alt": "Modern Bedroom — photo 14",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "modern-bedroom-15-img-20260910-wa0184",
+    "category": "modern-bedroom",
+    "kind": "image",
+    "src": "/assets/img/projects/modern-bedroom/15-img-20260910-wa0184.jpg",
+    "alt": "Modern Bedroom — photo 15",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "modern-bedroom-17-img-2974",
+    "category": "modern-bedroom",
+    "kind": "image",
+    "src": "/assets/img/projects/modern-bedroom/17-img-2974.jpg",
+    "alt": "Modern Bedroom — photo 17",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "modern-bedroom-18-vid-20260910-wa0197",
+    "category": "modern-bedroom",
+    "kind": "video",
+    "src": "/assets/video/projects/modern-bedroom/18-vid-20260910-wa0197.mp4",
+    "poster": "/assets/img/projects/modern-bedroom/18-vid-20260910-wa0197-poster.jpg",
+    "alt": "Modern Bedroom — video 18",
+    "width": 1280,
+    "height": 720,
+    "sizeMB": 8,
+    "featured": false
+  },
+  {
+    "id": "interior-design-02-5-1-photo",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/02-5-1-photo.jpg",
+    "alt": "Interior Design — photo 2",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-03-5-2-photo",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/03-5-2-photo.jpg",
+    "alt": "Interior Design — photo 3",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-04-fb-img-1737491358614",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/04-fb-img-1737491358614.jpg",
+    "alt": "Interior Design — photo 4",
+    "width": 1080,
+    "height": 1440
+  },
+  {
+    "id": "interior-design-06-img-20240407-wa0001",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/06-img-20240407-wa0001.jpg",
+    "alt": "Interior Design — photo 6",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-07-img-20240407-wa0003",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/07-img-20240407-wa0003.jpg",
+    "alt": "Interior Design — photo 7",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-08-img-20240411-wa0018",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/08-img-20240411-wa0018.jpg",
+    "alt": "Interior Design — photo 8",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-09-img-20240623-wa0000",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/09-img-20240623-wa0000.jpg",
+    "alt": "Interior Design — photo 9",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-10-img-20240623-wa0001",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/10-img-20240623-wa0001.jpg",
+    "alt": "Interior Design — photo 10",
+    "width": 2200,
+    "height": 1352
+  },
+  {
+    "id": "interior-design-11-img-20240623-wa0005",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/11-img-20240623-wa0005.jpg",
+    "alt": "Interior Design — photo 11",
+    "width": 2200,
+    "height": 1389
+  },
+  {
+    "id": "interior-design-13-1-1-photo",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/13-1-1-photo.jpg",
+    "alt": "Interior Design — photo 13",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-14-1-5-photo",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/14-1-5-photo.jpg",
+    "alt": "Interior Design — photo 14",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-15-6-3-photo",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/15-6-3-photo.jpg",
+    "alt": "Interior Design — photo 15",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "id": "interior-design-16-6-4-photo-1",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/16-6-4-photo-1.jpg",
+    "alt": "Interior Design — photo 16",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "id": "interior-design-18-8",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/18-8.jpg",
+    "alt": "Interior Design — photo 18",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-19-1-1-3-photo",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/19-1-1-3-photo.jpg",
+    "alt": "Interior Design — photo 19",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-21-1-11-photo",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/21-1-11-photo.jpg",
+    "alt": "Interior Design — photo 21",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-22-1-12-photo",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/22-1-12-photo.jpg",
+    "alt": "Interior Design — photo 22",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-23-1-13-photo",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/23-1-13-photo.jpg",
+    "alt": "Interior Design — photo 23",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-24-1-14-photo-1",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/24-1-14-photo-1.jpg",
+    "alt": "Interior Design — photo 24",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-26-1-4-photo-1",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/26-1-4-photo-1.jpg",
+    "alt": "Interior Design — photo 26",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-27-1-5-photo-2",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/27-1-5-photo-2.jpg",
+    "alt": "Interior Design — photo 27",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-28-1-7-photo",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/28-1-7-photo.jpg",
+    "alt": "Interior Design — photo 28",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-35-img-20230825-wa0000",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/35-img-20230825-wa0000.jpg",
+    "alt": "Interior Design — photo 35",
+    "width": 736,
+    "height": 736
+  },
+  {
+    "id": "interior-design-37-img-20231012-wa0004",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/37-img-20231012-wa0004.jpg",
+    "alt": "Interior Design — photo 37",
+    "width": 1600,
+    "height": 900
+  },
+  {
+    "id": "interior-design-38-img-20231012-wa0005",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/38-img-20231012-wa0005.jpg",
+    "alt": "Interior Design — photo 38",
+    "width": 1600,
+    "height": 900
+  },
+  {
+    "id": "interior-design-39-img-20231224-wa0007",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/39-img-20231224-wa0007.jpg",
+    "alt": "Interior Design — photo 39",
+    "width": 1600,
+    "height": 900
+  },
+  {
+    "id": "interior-design-40-img-20240407-wa0002",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/40-img-20240407-wa0002.jpg",
+    "alt": "Interior Design — photo 40",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-42-img-20240410-wa0003",
+    "category": "interior-design",
+    "kind": "image",
+    "src": "/assets/img/projects/interior-design/42-img-20240410-wa0003.jpg",
+    "alt": "Interior Design — photo 42",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "interior-design-45-1000315067-edited",
+    "category": "interior-design",
+    "kind": "video",
+    "src": "/assets/video/projects/interior-design/45-1000315067-edited.mp4",
+    "poster": "/assets/img/projects/interior-design/45-1000315067-edited-poster.jpg",
+    "alt": "Interior Design — video 45",
+    "width": 848,
+    "height": 480,
+    "sizeMB": 2,
+    "featured": true
+  },
+  {
+    "id": "interior-design-46-1000332590-edited",
+    "category": "interior-design",
+    "kind": "video",
+    "src": "/assets/video/projects/interior-design/46-1000332590-edited.mp4",
+    "poster": "/assets/img/projects/interior-design/46-1000332590-edited-poster.jpg",
+    "alt": "Interior Design — video 46",
+    "width": 1280,
+    "height": 720,
+    "sizeMB": 4,
+    "featured": true
+  },
+  {
+    "id": "interior-design-48-img-4146",
+    "category": "interior-design",
+    "kind": "video",
+    "src": "/assets/video/projects/interior-design/48-img-4146.mp4",
+    "poster": "/assets/img/projects/interior-design/48-img-4146-poster.jpg",
+    "alt": "Interior Design — video 48",
+    "width": 1280,
+    "height": 720,
+    "sizeMB": 4,
+    "featured": true
+  },
+  {
+    "id": "interior-design-49-img-7166",
+    "category": "interior-design",
+    "kind": "video",
+    "src": "/assets/video/projects/interior-design/49-img-7166.mp4",
+    "poster": "/assets/img/projects/interior-design/49-img-7166-poster.jpg",
+    "alt": "Interior Design — video 49",
+    "width": 1280,
+    "height": 720,
+    "sizeMB": 17,
+    "featured": true
+  },
+  {
+    "id": "interior-design-50-img-7462",
+    "category": "interior-design",
+    "kind": "video",
+    "src": "/assets/video/projects/interior-design/50-img-7462.mp4",
+    "poster": "/assets/img/projects/interior-design/50-img-7462-poster.jpg",
+    "alt": "Interior Design — video 50",
+    "width": 1280,
+    "height": 720,
+    "sizeMB": 10,
+    "featured": true
+  },
+  {
+    "id": "interior-design-51-img-8734",
+    "category": "interior-design",
+    "kind": "video",
+    "src": "/assets/video/projects/interior-design/51-img-8734.mp4",
+    "poster": "/assets/img/projects/interior-design/51-img-8734-poster.jpg",
+    "alt": "Interior Design — video 51",
+    "width": 1280,
+    "height": 720,
+    "sizeMB": 3,
+    "featured": true
+  },
+  {
+    "id": "interior-design-52-render-video",
+    "category": "interior-design",
+    "kind": "video",
+    "src": "/assets/video/projects/interior-design/52-render-video.mp4",
+    "poster": "/assets/img/projects/interior-design/52-render-video-poster.jpg",
+    "alt": "Interior Design — video 52",
+    "width": 1280,
+    "height": 720,
+    "sizeMB": 9,
+    "featured": true
+  },
+  {
+    "id": "interior-design-53-snapinsta-app-video-aqopn0etcqduyz1eg-vhtswy89uif3pyt90mcim4zxz-bgqbwzbtdjiu9dwu6gx00lyquil4og0q0xouco5mgjbbbuzodjx9q1w1rx0",
+    "category": "interior-design",
+    "kind": "video",
+    "src": "/assets/video/projects/interior-design/53-snapinsta-app-video-aqopn0etcqduyz1eg-vhtswy89uif3pyt90mcim4zxz-bgqbwzbtdjiu9dwu6gx00lyquil4og0q0xouco5mgjbbbuzodjx9q1w1rx0.mp4",
+    "poster": "/assets/img/projects/interior-design/53-snapinsta-app-video-aqopn0etcqduyz1eg-vhtswy89uif3pyt90mcim4zxz-bgqbwzbtdjiu9dwu6gx00lyquil4og0q0xouco5mgjbbbuzodjx9q1w1rx0-poster.jpg",
+    "alt": "Interior Design — video 53",
+    "width": 720,
+    "height": 1280,
+    "sizeMB": 1,
+    "featured": true
+  },
+  {
+    "id": "interior-design-54-video",
+    "category": "interior-design",
+    "kind": "video",
+    "src": "/assets/video/projects/interior-design/54-video.mp4",
+    "poster": "/assets/img/projects/interior-design/54-video-poster.jpg",
+    "alt": "Interior Design — video 54",
+    "width": 1280,
+    "height": 720,
+    "sizeMB": 7,
+    "featured": true
+  },
+  {
+    "id": "hotel-design-01-6-1-photo",
+    "category": "hotel-design",
+    "kind": "image",
+    "src": "/assets/img/projects/hotel-design/01-6-1-photo.jpg",
+    "alt": "Hotel Design — photo 1",
+    "width": 2200,
+    "height": 1524
+  },
+  {
+    "id": "hotel-design-02-6-10-photo",
+    "category": "hotel-design",
+    "kind": "image",
+    "src": "/assets/img/projects/hotel-design/02-6-10-photo.jpg",
+    "alt": "Hotel Design — photo 2",
+    "width": 2200,
+    "height": 1408
+  },
+  {
+    "id": "hotel-design-03-6-9-photo",
+    "category": "hotel-design",
+    "kind": "image",
+    "src": "/assets/img/projects/hotel-design/03-6-9-photo.jpg",
+    "alt": "Hotel Design — photo 3",
+    "width": 2200,
+    "height": 1299
+  },
+  {
+    "id": "commercial-projects-01-commercial-shop-deisgn-2",
+    "category": "commercial-projects",
+    "kind": "image",
+    "src": "/assets/img/projects/commercial-projects/01-commercial-shop-deisgn-2.jpg",
+    "alt": "Commercial Projects — photo 1",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "commercial-projects-02-commercial-shop-design-1",
+    "category": "commercial-projects",
+    "kind": "image",
+    "src": "/assets/img/projects/commercial-projects/02-commercial-shop-design-1.jpg",
+    "alt": "Commercial Projects — photo 2",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "commercial-projects-03-doctor-room-cabin-interior-commercial",
+    "category": "commercial-projects",
+    "kind": "image",
+    "src": "/assets/img/projects/commercial-projects/03-doctor-room-cabin-interior-commercial.jpg",
+    "alt": "Commercial Projects — photo 3",
+    "width": 2200,
+    "height": 1238
+  },
+  {
+    "id": "hospital-design-01-hospital-walkthrough",
+    "category": "hospital-design",
+    "kind": "video",
+    "src": "/assets/video/projects/_shared/hospital-walkthrough-full.mp4",
+    "poster": "/assets/img/projects/hospital-design/01-hospital-walkthrough-poster.jpg",
+    "alt": "Hospital Design — video 1",
+    "width": 1600,
+    "height": 900,
+    "sizeMB": 5,
+    "featured": true
+  },
+  {
+    "id": "hospital-design-02-img-5723",
+    "category": "hospital-design",
+    "kind": "video",
+    "src": "/assets/video/projects/_shared/img5723-full.mp4",
+    "poster": "/assets/img/projects/hospital-design/02-img-5723-poster.jpg",
+    "alt": "Hospital Design — video 2",
+    "width": 1280,
+    "height": 720,
+    "sizeMB": 9,
+    "featured": true
+  },
+  {
+    "id": "site-supervision-01-img-8776",
+    "category": "site-supervision",
+    "kind": "video",
+    "src": "/assets/video/projects/site-supervision/01-img-8776.mp4",
+    "poster": "/assets/img/projects/site-supervision/01-img-8776-poster.jpg",
+    "alt": "Site Supervision — video 1",
+    "width": 1600,
+    "height": 900,
+    "sizeMB": 15,
+    "featured": false
+  },
+  {
+    "id": "site-supervision-02-img-5358",
+    "category": "site-supervision",
+    "kind": "video",
+    "src": "/assets/video/projects/site-supervision/02-img-5358.mp4",
+    "poster": "/assets/img/projects/site-supervision/02-img-5358-poster.jpg",
+    "alt": "Site Supervision — video 2",
+    "width": 1600,
+    "height": 900,
+    "sizeMB": 4,
+    "featured": false
+  },
+  {
+    "id": "site-supervision-03-img-7606",
+    "category": "site-supervision",
+    "kind": "video",
+    "src": "/assets/video/projects/site-supervision/03-img-7606.mp4",
+    "poster": "/assets/img/projects/site-supervision/03-img-7606-poster.jpg",
+    "alt": "Site Supervision — video 3",
+    "width": 720,
+    "height": 1280,
+    "sizeMB": 4,
+    "featured": false
+  },
+  {
+    "id": "site-supervision-04-img-8753",
+    "category": "site-supervision",
+    "kind": "video",
+    "src": "/assets/video/projects/site-supervision/04-img-8753.mp4",
+    "poster": "/assets/img/projects/site-supervision/04-img-8753-poster.jpg",
+    "alt": "Site Supervision — video 4",
+    "width": 1600,
+    "height": 900,
+    "sizeMB": 8,
+    "featured": false
+  }
+]

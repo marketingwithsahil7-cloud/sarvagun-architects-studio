@@ -1,0 +1,21 @@
+# 2026-09-12: all photo/video media (public/assets/img/, public/assets/video/)
+# now lives on Vercel Blob, not in the app bundle — see README's "Blob media
+# migration" section, and scripts/upload-to-blob.mjs / apply-blob-map.mjs for
+# how it got there. These directories are still generated locally by
+# scripts/prepare-media.mjs and scripts/prepare-projects-media.mjs (useful
+# for reprocessing source material), but nothing in the deployed app reads
+# from them any more — every reference in lib/content.ts, lib/about-content.ts
+# and lib/generated/projects-media.json points at a Blob URL instead. This is
+# also what got the deploy back under the CLI's source-file upload limit
+# (100MB Hobby / 1GB Pro) without needing to exclude any page.
+/public/assets/img
+/public/assets/video
+
+# Standard excludes (this project has no .gitignore fallback quirks, but
+# .vercelignore replaces .gitignore entirely once it exists, so repeat them)
+/node_modules
+/.next
+/out
+/build
+/projects
+/assets

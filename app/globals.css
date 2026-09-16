@@ -1,0 +1,306 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #0a0908;
+  --panel: #141209;
+  --ivory: #ede7da;
+  --dim: #b3ac9b;
+  --burnt: #e2672b;
+  --hairline: rgba(237, 231, 218, 0.16);
+
+  /* Focus-pull reveal blur radius — mobile default is intentionally small so
+     mid-range Android GPUs don't drop frames. Keep this in sync with the
+     hardcoded numbers in components/RevealDirector.tsx (one per breakpoint,
+     read once at setup rather than per-element to avoid layout thrash). */
+  --reveal-blur: 3px;
+
+  /* Shared transition token for CSS-driven UI-toggle open/close animations
+     (mobile nav, category filter dropdown/sheet) — distinct from the GSAP
+     scroll-reveal system above. The easing matches Tailwind's own default
+     transition-timing-function, already the de-facto curve behind every
+     existing hover/color transition in the app, so new toggle animations
+     read as part of the same motion language rather than a one-off.
+     UI_TRANSITION_MS in lib/useDelayedUnmount.ts must stay in sync with the
+     duration below (same convention as --reveal-blur above). */
+  --ui-duration: 280ms;
+  --ui-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --reveal-blur: 9px;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: auto; /* Lenis handles smooth scroll */
+  }
+
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  body {
+    position: relative;
+    background-color: var(--ink);
+    color: var(--ivory);
+    font-family: var(--font-archivo), system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv05";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Blueprint-grid texture — drafting paper, behind everything. A single
+     fixed layer (not a per-section background) so a blurred reveal target
+     never blurs against a hard-edged grid line beneath it. Plain
+     repeating-linear-gradient: cheap, one raster, no tiled image request.
+     Never background-attachment:fixed — that repaints every scroll frame. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      repeating-linear-gradient(to right, rgba(237, 231, 218, 0.07) 0 1px, transparent 1px 72px),
+      repeating-linear-gradient(to bottom, rgba(237, 231, 218, 0.07) 0 1px, transparent 1px 72px);
+  }
+
+  /* Fraunces display — high-contrast editorial cut. Its display optical
+     size (opsz 120) has pronounced thin/thick stroke contrast that reads as
+     visibly light at the true CSS-spec "normal" (400) weight, especially
+     below headline sizes — so this class carries its own 500 default rather
+     than relying on every call site to remember an explicit font-medium.
+     Tailwind's font-medium/font-semibold/etc. utilities live in the
+     higher-priority `utilities` layer, so they still override this cleanly
+     wherever a heavier weight is actually wanted. */
+  .font-display {
+    font-optical-sizing: auto;
+    font-variation-settings: "SOFT" 0, "WONK" 1, "opsz" 120;
+    letter-spacing: -0.015em;
+    font-weight: 500;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: var(--burnt);
+    color: var(--ink);
+  }
+
+  /* Visible keyboard focus — burnt-orange, offset from the target */
+  :focus-visible {
+    outline: 2px solid var(--burnt);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  /* Only show the ring for keyboard users */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: 88rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 4.5rem);
+  }
+
+  /* Architectural dimension line: hairline + end ticks + sentence-case label.
+     Replaces tracked-caps eyebrow labels at section transitions. */
+  .dimline {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    width: 100%;
+  }
+
+  .dimline__rule {
+    position: relative;
+    flex: 1;
+    height: 1px;
+    background: var(--hairline);
+  }
+
+  .dimline__rule::before,
+  .dimline__rule::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    width: 1px;
+    height: 9px;
+    background: var(--dim);
+  }
+
+  .dimline__rule::before { left: 0; }
+  .dimline__rule::after { right: 0; }
+
+  .dimline__label {
+    flex-shrink: 0;
+    font-size: 0.8125rem;
+    line-height: 1;
+    color: var(--dim);
+    font-feature-settings: "tnum";
+  }
+
+  .dimline__index {
+    color: var(--burnt);
+    font-variant-numeric: tabular-nums;
+    margin-right: 0.5rem;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  /* Prevent layout shift: media wells reserve their box before load */
+  .media-well {
+    background-color: var(--panel);
+    overflow: hidden;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Plain opacity fade, mount-triggered — used by the /projects masonry grid
+   for its "swap the visible set with a reveal" behaviour on filter change.
+   RevealDirector's ScrollTrigger.batch is built once on page load and can't
+   pick up nodes a client-side filter mounts afterwards, so the grid can't
+   use it directly; this keyframe reproduces the same plain-opacity look
+   (no blur — the grid can hold 40+ tiles at once, more than the "few
+   section-level blocks" the blur budget is meant for) and, because it's a
+   CSS animation, naturally replays whenever a tile's DOM node is freshly
+   mounted — on first scroll-into-view and on every filter swap alike.
+   Respects prefers-reduced-motion for free via the existing blanket
+   animation-duration override below. */
+@keyframes tile-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ---------------------------------------------------------------------
+   Focus-pull reveal — initial (pre-paint) state.
+
+   Gated on .mo, set by a blocking inline script in <head> (see
+   app/layout.tsx) only when JS is available and prefers-reduced-motion is
+   NOT set. No-JS and reduced-motion visitors never get .mo, so they see
+   full opacity/no blur with zero flash — RevealDirector.tsx never even
+   creates the batch for them.
+   ------------------------------------------------------------------- */
+.mo [data-reveal] {
+  opacity: 0;
+}
+.mo [data-reveal][data-reveal-blur] {
+  filter: blur(var(--reveal-blur));
+}
+
+/* Desktop-only pointer affordances. Mobile equivalent: a brief tap scale
+   under (hover:none) — see the mobile block below. */
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  [data-cursor="view"] {
+    cursor: none;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  [data-magnet] {
+    transition: transform 0.12s ease-out;
+  }
+  [data-magnet]:active {
+    transform: scale(0.97);
+  }
+}
+
+/* Respect reduced-motion: neutralise transforms, kill parallax/tilt/blur,
+   make every reveal-target immediately visible. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Shared overlay-panel open/close transitions — mobile nav menu, category
+   filter dropdown/sheet. Toggled via a `data-closed` attribute (present
+   only while closed) rather than conditional Tailwind utility classes, so
+   the "closed" and "open" values live in one place each instead of being
+   duplicated across every consumer. `data-closed` is managed imperatively
+   by lib/useOpenTransition.ts (a forced-reflow technique, not a React prop
+   or CSS `@starting-style` — see that file for why) so these elements
+   animate in on mount instead of just appearing already-open.
+   ------------------------------------------------------------------- */
+.ui-backdrop {
+  opacity: 1;
+  transition: opacity var(--ui-duration) var(--ui-ease);
+}
+.ui-backdrop[data-closed] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Mobile nav menu — fade+scale from the top-right corner, near the
+   hamburger icon that opens it. */
+.ui-panel-scale {
+  transform-origin: top right;
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition:
+    opacity var(--ui-duration) var(--ui-ease),
+    transform var(--ui-duration) var(--ui-ease);
+}
+.ui-panel-scale[data-closed] {
+  opacity: 0;
+  transform: scale(0.95) translateY(-0.25rem);
+  pointer-events: none;
+}
+
+/* Category filter mobile bottom sheet — slides up from the viewport edge. */
+.ui-panel-slide-up {
+  transform: translateY(0);
+  transition: transform var(--ui-duration) var(--ui-ease);
+}
+.ui-panel-slide-up[data-closed] {
+  transform: translateY(100%);
+}
+
+/* Category filter desktop dropdown — grid-template-rows 0fr/1fr animates
+   height without measuring scrollHeight in JS; opacity fades in sync. */
+.ui-panel-grid {
+  opacity: 1;
+  grid-template-rows: 1fr;
+  transition:
+    opacity var(--ui-duration) var(--ui-ease),
+    grid-template-rows var(--ui-duration) var(--ui-ease);
+}
+.ui-panel-grid[data-closed] {
+  opacity: 0;
+  grid-template-rows: 0fr;
+  pointer-events: none;
+}

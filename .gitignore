@@ -1,0 +1,21 @@
+/node_modules
+/.next
+/out
+/build
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+.env*
+
+# Raw client media archives — never commit these. `projects/` alone is 8.3GB
+# and is the source scripts/prepare-media.mjs reads from; `assets/` is the
+# older top-level source dump (logo excluded below since public/ needs it
+# too, but the copy that matters ships from public/assets/logo.png).
+/projects
+/assets
+
+.vercel
+.env*
+
+# Local Netlify folder
+.netlify
