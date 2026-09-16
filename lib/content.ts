@@ -567,7 +567,7 @@ export const contactDetails = {
   index: "02",
   label: "Direct contact",
   // Small, decorative line under the "Direct contact" label — not a headline.
-  tagline: "One number. One studio. No middlemen.",
+  tagline: "One studio. No middlemen.",
   // Small, decorative line under the "Find us" heading, alongside the
   // street address line.
   findUsTagline: "Saharanpur first. India, always.",
@@ -584,12 +584,9 @@ export const contactDetails = {
     src: "/assets/img/slides/front-elevation-hero-portrait.jpg",
     alt: "Warm-lit front elevation of a modern bungalow with wooden louvres, wet driveway reflecting the facade",
   } satisfies Media,
-  // Surfaced during media review but NOT confirmed by the client yet — do
-  // not render these anywhere. Adding them later is a one-line change: set
-  // the value here, then reference contactDetails.email / .phoneAlt in
-  // components/ContactSplit.tsx (both are currently unreferenced there).
+  // `email` still pending client confirmation — do not render it yet.
   email: undefined as string | undefined, // pending client confirmation
-  phoneAlt: undefined as string | undefined, // pending client confirmation (second number)
+  phoneAlt: studio.phoneAlt,
 };
 
 export const contactForm = {

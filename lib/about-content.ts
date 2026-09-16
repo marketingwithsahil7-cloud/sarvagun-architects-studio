@@ -21,17 +21,13 @@ export const aboutStory = {
   index: "02",
   label: "The studio",
   heading: "Our story, in short",
-  // Small, decorative line under the heading — unlike `body` below, this
-  // isn't biographical, so the "don't invent" rule on that TODO doesn't
-  // apply to it.
-  tagline: "The story so far, plainly told.",
-  // TODO: real founder bio — years active, qualification, founding story —
-  // pending from client. Do not fill this in with an invented founding
-  // year, "X years of experience," registration status, or generic
-  // architect-bio copy — replace the placeholder body below with the real
-  // text once the client supplies it, and remove this comment.
-  placeholder: true,
-  body: "This is a placeholder. The studio's own story — when it started, who leads which discipline day to day, and what the practice stands for — hasn't been supplied by the client yet, so nothing here is invented to fill the gap. This paragraph will be replaced with the real one once it comes through.",
+  // Small, decorative line under the heading.
+  tagline: "The story so far, thoughtfully designed.",
+  body: [
+    "Sarvagun Architects Studio was built around a passion for creating spaces where design and everyday life come together effortlessly. Our approach combines architectural clarity with refined interiors, thoughtful materials, natural light and functional planning.",
+    "Every project begins with listening — understanding the client, the context and the purpose behind the space. From that foundation, we develop designs that are contemporary yet enduring, expressive yet practical.",
+    "We see architecture as more than a structure and interiors as more than finishes. Together, they shape how a place feels, functions and becomes a part of people’s lives.",
+  ],
 };
 
 export const aboutStats = {

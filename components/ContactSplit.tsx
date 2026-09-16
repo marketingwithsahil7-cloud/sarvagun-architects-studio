@@ -35,6 +35,9 @@ export function ContactSplit() {
               {contactDetails.whatsappLabel}
             </a>
             <p className="mt-3 font-sans text-[0.85rem] text-dim">{studio.phoneDisplay}</p>
+            {contactDetails.phoneAlt && (
+              <p className="mt-1 font-sans text-[0.85rem] text-dim">{contactDetails.phoneAlt}</p>
+            )}
 
             <dl className="mt-8 space-y-3 font-sans text-[0.92rem]">
               <div className="flex gap-3">

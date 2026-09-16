@@ -41,6 +41,9 @@ export function Footer() {
           <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="text-dim hover:text-ivory">
             WhatsApp — {studio.phoneDisplay}
           </a>
+          <a href={`tel:+91${studio.phoneAlt}`} className="text-dim hover:text-ivory">
+            Call — {studio.phoneAlt}
+          </a>
           <a href={`mailto:${studio.email}`} className="text-dim hover:text-ivory">
             {studio.email}
           </a>
