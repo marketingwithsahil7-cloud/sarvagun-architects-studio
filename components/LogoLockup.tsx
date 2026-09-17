@@ -31,43 +31,53 @@ export function LogoLockup({ size = "nav" }: { size?: "nav" | "footer" }) {
     const studioEl = studioRef.current;
     if (!sarvagunEl || !studioEl) return;
 
-    // letter-spacing scales linearly with width, but *how many* gaps it
-    // actually spaces (browsers disagree on whether the last character
-    // gets a trailing gap or not) isn't assumed here — it's measured with
-    // a real probe value, so this is correct regardless of that browser
-    // difference. Assuming "one gap per character" undershot the true
-    // browsers-add-it-to-(count-1)-gaps behavior by exactly one gap's
-    // worth, which is what still read as a small but visible residual
-    // misalignment after the previous fix.
-    //
+    // getBoundingClientRect() on the SPAN measures its box — which includes
+    // one trailing letter-spacing gap *after* the last visible character
+    // (confirmed empirically: probing showed slope === charCount, i.e. the
+    // browser does space after the last letter too). Matching box widths
+    // therefore matched "Sarvagun"'s box (including its own large, boosted
+    // trailing gap) to "Architects Studio"'s box (including ITS much
+    // smaller, unboosted trailing gap) — the boxes landed exactly equal,
+    // but the two trailing gaps differ by several px, so the *visible
+    // letters* (glyph ink) still fell short of "O", reading as still
+    // misaligned. A Range over each span's text content bounds only the
+    // rendered glyphs, not CSS spacing added beyond the last one — that's
+    // what actually needs to match.
+    function inkWidth(el: HTMLElement) {
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      const rect = range.getBoundingClientRect();
+      return rect.width;
+    }
+
     // Clear any previously-applied inline letter-spacing BEFORE reading the
     // computed value — sync() re-runs on every font swap and every resize
     // (mobile address-bar show/hide fires plenty of these), and reading
     // computed style first would pick up last run's already-boosted value,
     // stacking a fresh correction on top of it each time. That compounding
-    // was the earlier bug: spacing crept wider on every re-run instead of
+    // was an earlier bug: spacing crept wider on every re-run instead of
     // landing on the same exact value.
     function sync() {
       const el = sarvagunEl!;
       if (!el.textContent) return;
       el.style.letterSpacing = "";
       const baseSpacing = parseFloat(getComputedStyle(el).letterSpacing) || 0;
-      const width0 = el.getBoundingClientRect().width;
-      const targetWidth = studioEl!.getBoundingClientRect().width;
-      if (width0 >= targetWidth) return; // already wide enough — never narrow
+      const ink0 = inkWidth(el);
+      const targetInk = inkWidth(studioEl!);
+      if (ink0 >= targetInk) return; // already wide enough — never narrow
 
-      // Probe: apply a known extra amount, read back how much width that
-      // actually bought, and use that real slope to solve for the exact
-      // spacing needed — rather than assuming it.
+      // Probe: apply a known extra amount, read back how much *ink* width
+      // that actually bought, and use that real slope to solve for the
+      // exact spacing needed — rather than assuming how many gaps count.
       const probePx = 10;
       el.style.letterSpacing = `${baseSpacing + probePx}px`;
-      const width1 = el.getBoundingClientRect().width;
-      const slope = (width1 - width0) / probePx;
+      const ink1 = inkWidth(el);
+      const slope = (ink1 - ink0) / probePx;
       if (slope <= 0) {
         el.style.letterSpacing = "";
         return;
       }
-      const neededExtra = (targetWidth - width0) / slope;
+      const neededExtra = (targetInk - ink0) / slope;
       el.style.letterSpacing = `${baseSpacing + neededExtra}px`;
     }
 
