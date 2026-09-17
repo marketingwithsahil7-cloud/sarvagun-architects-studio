@@ -31,35 +31,44 @@ export function LogoLockup({ size = "nav" }: { size?: "nav" | "footer" }) {
     const studioEl = studioRef.current;
     if (!sarvagunEl || !studioEl) return;
 
-    // letter-spacing scales linearly with character count (it adds a fixed
-    // gap after every character, including the last), so the exact spacing
-    // needed to close the gap to `studioEl`'s width is a one-shot
-    // calculation, not a search: extra-per-gap = (target - natural) / count.
+    // letter-spacing scales linearly with width, but *how many* gaps it
+    // actually spaces (browsers disagree on whether the last character
+    // gets a trailing gap or not) isn't assumed here — it's measured with
+    // a real probe value, so this is correct regardless of that browser
+    // difference. Assuming "one gap per character" undershot the true
+    // browsers-add-it-to-(count-1)-gaps behavior by exactly one gap's
+    // worth, which is what still read as a small but visible residual
+    // misalignment after the previous fix.
     //
     // Clear any previously-applied inline letter-spacing BEFORE reading the
     // computed value — sync() re-runs on every font swap and every resize
     // (mobile address-bar show/hide fires plenty of these), and reading
     // computed style first would pick up last run's already-boosted value,
-    // stacking a fresh extraPerGap on top of it each time. That compounding
-    // was the actual bug: spacing crept wider on every re-run instead of
-    // landing on the same exact value, which is what still read as
-    // misaligned after the first deploy of this fix.
+    // stacking a fresh correction on top of it each time. That compounding
+    // was the earlier bug: spacing crept wider on every re-run instead of
+    // landing on the same exact value.
     function sync() {
       const el = sarvagunEl!;
-      const charCount = el.textContent?.length ?? 0;
-      if (!charCount) return;
+      if (!el.textContent) return;
       el.style.letterSpacing = "";
       const baseSpacing = parseFloat(getComputedStyle(el).letterSpacing) || 0;
-      const naturalWidth = el.getBoundingClientRect().width;
+      const width0 = el.getBoundingClientRect().width;
       const targetWidth = studioEl!.getBoundingClientRect().width;
-      const extraPerGap = (targetWidth - naturalWidth) / charCount;
-      // Only ever widen — "Architects Studio" (more characters) is always
-      // the wider line at these font sizes, but never narrow below the
-      // stylesheet's own tracking-[0.15em] floor if that assumption ever
-      // breaks (a future copy change, a font swap).
-      if (extraPerGap > 0) {
-        el.style.letterSpacing = `${baseSpacing + extraPerGap}px`;
+      if (width0 >= targetWidth) return; // already wide enough — never narrow
+
+      // Probe: apply a known extra amount, read back how much width that
+      // actually bought, and use that real slope to solve for the exact
+      // spacing needed — rather than assuming it.
+      const probePx = 10;
+      el.style.letterSpacing = `${baseSpacing + probePx}px`;
+      const width1 = el.getBoundingClientRect().width;
+      const slope = (width1 - width0) / probePx;
+      if (slope <= 0) {
+        el.style.letterSpacing = "";
+        return;
       }
+      const neededExtra = (targetWidth - width0) / slope;
+      el.style.letterSpacing = `${baseSpacing + neededExtra}px`;
     }
 
     sync();
