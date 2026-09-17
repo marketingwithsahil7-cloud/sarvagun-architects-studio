@@ -11,14 +11,17 @@ import { useLayoutEffect, useRef } from "react";
  * BrandLockup.tsx) that had already drifted out of sync with each other —
  * this is the fix, not a style to diverge from again.
  *
- * "Sarvagun"'s letter-spacing is stretched via JS measurement (below) to
- * exactly match "Architects Studio"'s rendered width, not CSS
- * `text-align-last: justify` — that property has zero support in
- * Safari/WebKit (desktop and iOS, which covers every iPhone visitor), so it
- * silently no-ops there and "SARVAGUN" reads visibly shorter than
- * "ARCHITECTS STUDIO" on any Apple device, reproducing the exact bug the
- * client originally flagged. getBoundingClientRect-based measurement has no
- * such gap — it's plain layout geometry, identical in every browser.
+ * "Sarvagun" is stretched to exactly match "Architects Studio"'s rendered
+ * width via a CSS `transform: scaleX()`, not letter-spacing. Letter-spacing
+ * requires knowing exactly how many character gaps a browser actually
+ * spaces (trailing gap after the last letter or not — this varies and
+ * previous attempts here to measure it, both by formula and by probing,
+ * still left a small but real visual gap). scaleX sidesteps that entirely:
+ * `getBoundingClientRect().width` after `scaleX(k)` is defined to be
+ * exactly `naturalWidth * k`, in every browser, unconditionally — there is
+ * no equivalent ambiguity to get wrong. Not CSS `text-align-last: justify`
+ * either — that property has zero support in Safari/WebKit (desktop and
+ * iOS, which covers every iPhone visitor), so it silently no-ops there.
  */
 export function LogoLockup({ size = "nav" }: { size?: "nav" | "footer" }) {
   const isFooter = size === "footer";
@@ -31,54 +34,20 @@ export function LogoLockup({ size = "nav" }: { size?: "nav" | "footer" }) {
     const studioEl = studioRef.current;
     if (!sarvagunEl || !studioEl) return;
 
-    // getBoundingClientRect() on the SPAN measures its box — which includes
-    // one trailing letter-spacing gap *after* the last visible character
-    // (confirmed empirically: probing showed slope === charCount, i.e. the
-    // browser does space after the last letter too). Matching box widths
-    // therefore matched "Sarvagun"'s box (including its own large, boosted
-    // trailing gap) to "Architects Studio"'s box (including ITS much
-    // smaller, unboosted trailing gap) — the boxes landed exactly equal,
-    // but the two trailing gaps differ by several px, so the *visible
-    // letters* (glyph ink) still fell short of "O", reading as still
-    // misaligned. A Range over each span's text content bounds only the
-    // rendered glyphs, not CSS spacing added beyond the last one — that's
-    // what actually needs to match.
-    function inkWidth(el: HTMLElement) {
-      const range = document.createRange();
-      range.selectNodeContents(el);
-      const rect = range.getBoundingClientRect();
-      return rect.width;
-    }
-
-    // Clear any previously-applied inline letter-spacing BEFORE reading the
-    // computed value — sync() re-runs on every font swap and every resize
-    // (mobile address-bar show/hide fires plenty of these), and reading
-    // computed style first would pick up last run's already-boosted value,
-    // stacking a fresh correction on top of it each time. That compounding
-    // was an earlier bug: spacing crept wider on every re-run instead of
-    // landing on the same exact value.
+    // Reset any previously-applied scale BEFORE measuring — sync() re-runs
+    // on every font swap and every resize (mobile address-bar show/hide
+    // fires plenty of these), and measuring against an already-scaled
+    // element would compound the correction on every re-run instead of
+    // landing on the same exact value each time (the actual bug behind two
+    // earlier, letter-spacing-based attempts at this fix).
     function sync() {
       const el = sarvagunEl!;
-      if (!el.textContent) return;
-      el.style.letterSpacing = "";
-      const baseSpacing = parseFloat(getComputedStyle(el).letterSpacing) || 0;
-      const ink0 = inkWidth(el);
-      const targetInk = inkWidth(studioEl!);
-      if (ink0 >= targetInk) return; // already wide enough — never narrow
-
-      // Probe: apply a known extra amount, read back how much *ink* width
-      // that actually bought, and use that real slope to solve for the
-      // exact spacing needed — rather than assuming how many gaps count.
-      const probePx = 10;
-      el.style.letterSpacing = `${baseSpacing + probePx}px`;
-      const ink1 = inkWidth(el);
-      const slope = (ink1 - ink0) / probePx;
-      if (slope <= 0) {
-        el.style.letterSpacing = "";
-        return;
-      }
-      const neededExtra = (targetInk - ink0) / slope;
-      el.style.letterSpacing = `${baseSpacing + neededExtra}px`;
+      el.style.transform = "";
+      const natural = el.getBoundingClientRect().width;
+      const target = studioEl!.getBoundingClientRect().width;
+      if (natural <= 0 || natural >= target) return; // never shrink
+      el.style.transformOrigin = "left center";
+      el.style.transform = `scaleX(${target / natural})`;
     }
 
     sync();
