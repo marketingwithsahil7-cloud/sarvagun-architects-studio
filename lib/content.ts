@@ -206,7 +206,7 @@ export const proof = {
       } satisfies Media,
       walkthroughCaption:
         "Further proof: our own footage, from the finished elevation through to the interiors — ending, in our client's words, “happily handed over.”",
-      walkthroughCta: "Watch the walkthrough — 0:55",
+      walkthroughCta: "From Vision To Reality",
     },
     {
       // TODO: location unconfirmed — client hasn't told us the city for
@@ -237,7 +237,7 @@ export const proof = {
         sizeMB: 16,
       } satisfies Media,
       walkthroughCaption: "A closer look, on site — structural framing and facade detail as the build progresses.",
-      walkthroughCta: "Watch the walkthrough — 0:42",
+      walkthroughCta: "From Vision To Reality",
     },
     {
       // TODO: location unconfirmed, same as project 2 above — `builtLabel`
@@ -267,7 +267,7 @@ export const proof = {
       } satisfies Media,
       walkthroughCaption:
         "The full journey, in the client's own words: the old structure, the render, and the finished elevation — start to handover.",
-      walkthroughCta: "Watch the walkthrough — 1:23",
+      walkthroughCta: "From Vision To Reality",
       walkthroughOrientation: "portrait",
     },
   ] satisfies ProofBlock[],
@@ -572,17 +572,15 @@ export const contactDetails = {
   // street address line.
   findUsTagline: "Saharanpur first. India, always.",
   whatsappLabel: "Message on WhatsApp",
-  // A cropped variant of the same render used for `hero` above, not the
-  // original — that one is 16:9 and this slot is a tall (~3:4 at desktop,
-  // 4:5 on mobile) well; object-cover on a landscape image in a portrait
-  // box always shows 100% of the image's height (only width gets cropped),
-  // so the original left roughly a third of this slot showing empty sky no
-  // matter how object-position was tuned. This version is pre-cropped
-  // tighter on the building so the full-height render is mostly house.
+  // Natively portrait (941×1672), which is what this tall well wants — the
+  // slot is ~3:4 at desktop / 4:5 on mobile, so a landscape source would
+  // show 100% of its height and crop only width, leaving dead sky no matter
+  // how object-position was tuned (the previous image here was a hand-
+  // cropped landscape render working around exactly that).
   photo: {
     kind: "image",
-    src: "/assets/img/slides/front-elevation-hero-portrait.jpg",
-    alt: "Warm-lit front elevation of a modern bungalow with wooden louvres, wet driveway reflecting the facade",
+    src: "/assets/img/slides/contact-portrait.jpg",
+    alt: "Three-storey Sarvagun elevation at dusk — marble-clad pier, warm cove-lit balconies, slatted gate and a wet forecourt reflecting the facade",
   } satisfies Media,
   // `email` still pending client confirmation — do not render it yet.
   email: undefined as string | undefined, // pending client confirmation
