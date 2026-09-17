@@ -39,10 +39,7 @@ export function Footer() {
 
         <div className="flex flex-col gap-2.5 font-sans text-[0.88rem]">
           <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="text-dim hover:text-ivory">
-            WhatsApp — {studio.phoneDisplay}
-          </a>
-          <a href={`tel:+91${studio.phoneAlt}`} className="text-dim hover:text-ivory">
-            Call — {studio.phoneAlt}
+            WhatsApp — {studio.phoneDisplay}, {studio.phoneAlt}
           </a>
           <a href={`mailto:${studio.email}`} className="text-dim hover:text-ivory">
             {studio.email}
