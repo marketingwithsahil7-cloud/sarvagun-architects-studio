@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -37,6 +38,36 @@ function isLowPowerDevice() {
  */
 export function RevealDirector() {
   const pathname = usePathname();
+
+  // Safety net, independent of GSAP entirely: the pre-paint .mo class (set
+  // in app/layout.tsx) hides every [data-reveal] element on the promise
+  // that the ScrollTrigger batch below will reveal it. That promise can be
+  // broken on a real device in ways this component can't detect from
+  // inside — the GSAP chunk failing to load on a flaky connection, an
+  // in-app browser (Instagram/WhatsApp webview) throwing before this effect
+  // runs, or a font-swap reflow shifting an element's trigger position so
+  // ScrollTrigger's "top 88%" line never crosses it. Any of those leaves
+  // content permanently blurred or fully invisible — exactly the "blank
+  // page" reports. Dropping .mo falls back to the same full-opacity CSS
+  // path already used for no-JS/reduced-motion visitors, so this is always
+  // safe to fire even after GSAP has already revealed everything (GSAP's
+  // inline opacity/filter styles win over the class-gated CSS rule by
+  // specificity, so already-revealed elements are unaffected).
+  useEffect(() => {
+    const t = setTimeout(() => {
+      document.documentElement.classList.remove("mo");
+    }, 4000);
+    return () => clearTimeout(t);
+  }, [pathname]);
+
+  // Proactive companion to the watchdog above: web fonts swapping in after
+  // ScrollTrigger has already computed trigger positions (display: "swap"
+  // in app/layout.tsx) shifts layout, which can leave an in-view element's
+  // "top 88%" line uncrossed forever. Recomputing once fonts settle fixes
+  // that before the 4s watchdog would otherwise have to paper over it.
+  useEffect(() => {
+    document.fonts?.ready.then(() => ScrollTrigger.refresh()).catch(() => {});
+  }, [pathname]);
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
