@@ -35,12 +35,21 @@ export function LogoLockup({ size = "nav" }: { size?: "nav" | "footer" }) {
     // gap after every character, including the last), so the exact spacing
     // needed to close the gap to `studioEl`'s width is a one-shot
     // calculation, not a search: extra-per-gap = (target - natural) / count.
+    //
+    // Clear any previously-applied inline letter-spacing BEFORE reading the
+    // computed value — sync() re-runs on every font swap and every resize
+    // (mobile address-bar show/hide fires plenty of these), and reading
+    // computed style first would pick up last run's already-boosted value,
+    // stacking a fresh extraPerGap on top of it each time. That compounding
+    // was the actual bug: spacing crept wider on every re-run instead of
+    // landing on the same exact value, which is what still read as
+    // misaligned after the first deploy of this fix.
     function sync() {
       const el = sarvagunEl!;
       const charCount = el.textContent?.length ?? 0;
       if (!charCount) return;
-      const baseSpacing = parseFloat(getComputedStyle(el).letterSpacing) || 0;
       el.style.letterSpacing = "";
+      const baseSpacing = parseFloat(getComputedStyle(el).letterSpacing) || 0;
       const naturalWidth = el.getBoundingClientRect().width;
       const targetWidth = studioEl!.getBoundingClientRect().width;
       const extraPerGap = (targetWidth - naturalWidth) / charCount;
