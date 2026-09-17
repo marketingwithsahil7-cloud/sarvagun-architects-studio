@@ -36,16 +36,22 @@ export function LogoLockup({ size = "nav" }: { size?: "nav" | "footer" }) {
     const studioEl = studioRef.current;
     if (!sarvagunEl || !studioEl) return;
 
-    // getBoundingClientRect() on the SPAN measures its box, which can
-    // include a trailing letter-spacing gap after the last visible
-    // character. A Range over the span's text content bounds only the
-    // rendered glyphs, not any CSS spacing added beyond the last one — that
-    // glyph-to-glyph span is what actually needs to match for the letters
-    // themselves (not the invisible box edge) to visually line up.
-    function inkWidth(el: HTMLElement) {
-      const range = document.createRange();
-      range.selectNodeContents(el);
-      return range.getBoundingClientRect().width;
+    // The whole reason several earlier passes here measured "exactly equal"
+    // yet still *looked* short: letter-spacing adds its gap after EVERY
+    // character including the last one, and that final gap is invisible but
+    // counted in the element's width. Matching raw widths therefore lines up
+    // the boxes, not the letters — "Sarvagun" carries a large trailing gap
+    // (its own boosted spacing) while "Architects Studio" carries only its
+    // small 0.15em one, so the visible "N" lands short of the visible "O" by
+    // the difference between those two gaps (~7px at nav size — exactly the
+    // gap that kept getting reported). Range.getBoundingClientRect() does
+    // not help: it reports that same trailing-inclusive width.
+    //
+    // So each line's visible right edge is `width − its own letter-spacing`,
+    // and that is what gets matched below.
+    function visibleEnd(el: HTMLElement) {
+      const spacing = parseFloat(getComputedStyle(el).letterSpacing) || 0;
+      return el.getBoundingClientRect().width - spacing;
     }
 
     // Clear any previously-applied inline letter-spacing BEFORE reading the
@@ -59,34 +65,31 @@ export function LogoLockup({ size = "nav" }: { size?: "nav" | "footer" }) {
       if (!el.textContent) return;
       el.style.letterSpacing = "";
       const baseSpacing = parseFloat(getComputedStyle(el).letterSpacing) || 0;
-      const ink0 = inkWidth(el);
-      const targetInk = inkWidth(studioEl!);
-      if (ink0 >= targetInk) return; // already wide enough — never narrow
+      const w0 = el.getBoundingClientRect().width;
+      const target = visibleEnd(studioEl!);
+      if (w0 - baseSpacing >= target) return; // already wide enough
 
-      // Probe: apply a known extra amount, read back how much *ink* width
-      // that actually bought, and use that real slope to solve for the
-      // exact spacing needed — rather than assuming how many gaps count.
+      // Probe how much width one px of letter-spacing actually buys (i.e.
+      // how many gaps this browser spaces) instead of assuming it.
       const probePx = 20;
       el.style.letterSpacing = `${baseSpacing + probePx}px`;
-      const ink1 = inkWidth(el);
-      const slope = (ink1 - ink0) / probePx;
-      if (slope <= 0) {
-        el.style.letterSpacing = "";
-        return;
-      }
-      let extra = (targetInk - ink0) / slope;
-      el.style.letterSpacing = `${baseSpacing + extra}px`;
+      const w1 = el.getBoundingClientRect().width;
+      const slope = (w1 - w0) / probePx;
+      el.style.letterSpacing = "";
+      if (slope <= 1) return; // can't solve — leave the stylesheet's value
 
-      // Verify against the same real slope and correct any residual —
-      // catches rounding/subpixel snapping a single probe-and-solve pass
-      // can't predict, up to a tight tolerance, so the result is checked
-      // rather than trusted blind.
+      // width(L)   = w0 + slope*(L − baseSpacing)
+      // visible(L) = width(L) − L            (drop the trailing gap)
+      // solve visible(L) = target:
+      let L = (target - w0 + slope * baseSpacing) / (slope - 1);
+      el.style.letterSpacing = `${L}px`;
+
+      // Verify and correct any residual rather than trusting one solve.
       for (let i = 0; i < 3; i++) {
-        const measured = inkWidth(el);
-        const residual = targetInk - measured;
-        if (Math.abs(residual) < 0.3) break;
-        extra += residual / slope;
-        el.style.letterSpacing = `${baseSpacing + extra}px`;
+        const residual = target - visibleEnd(el);
+        if (Math.abs(residual) < 0.2) break;
+        L += residual / (slope - 1);
+        el.style.letterSpacing = `${L}px`;
       }
     }
 
