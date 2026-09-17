@@ -42,6 +42,15 @@ export function AboutIntro() {
             <MediaFrame media={aboutIntro.portrait} sizes="(min-width: 1024px) 45vw, 100vw" priority />
             <CornerMarks />
           </div>
+          <p className="mt-5 font-sans text-[0.95rem] font-semibold uppercase tracking-[0.12em] text-ivory">
+            {aboutIntro.portraitName}
+          </p>
+          <p className="mt-1 font-sans text-[0.85rem] text-dim">
+            {aboutIntro.portraitQualification}
+          </p>
+          <p className="mt-2 max-w-[24rem] font-sans text-[0.85rem] leading-relaxed text-dim">
+            {aboutIntro.portraitRole}
+          </p>
         </Reveal>
       </div>
     </section>

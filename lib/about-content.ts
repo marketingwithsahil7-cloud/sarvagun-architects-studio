@@ -15,6 +15,12 @@ export const aboutIntro = {
     src: "/assets/img/about/apoorv-portrait.jpg",
     alt: `${studio.principal}, principal of ${studio.name}`,
   } satisfies Media,
+  // Credentials as supplied by the client, captioning the portrait. Stored
+  // in sentence case and uppercased in CSS rather than typed in caps, so
+  // screen readers don't spell the name out letter by letter.
+  portraitName: `Architect ${studio.principal}`,
+  portraitQualification: "(B. Arch)",
+  portraitRole: `Founder and Principal Architect at ${studio.name}`,
 };
 
 export const aboutStory = {
