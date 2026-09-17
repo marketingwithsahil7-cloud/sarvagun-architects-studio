@@ -98,7 +98,26 @@ export function LogoLockup({ size = "nav" }: { size?: "nav" | "footer" }) {
     document.fonts?.ready.then(sync).catch(() => {});
     const ro = new ResizeObserver(sync);
     ro.observe(studioEl);
-    return () => ro.disconnect();
+
+    // Belt-and-braces re-checks: `document.fonts.ready` can resolve before
+    // the browser has actually finished the visual reflow that follows a
+    // font swap (a real, if narrow, timing gap — not every resolution of
+    // that promise is guaranteed to line up with the next paint). A plain
+    // page view with DevTools closed never gets the incidental resize that
+    // opening DevTools causes, so if the very first sync() lands on
+    // fallback-font metrics, nothing ever re-triggers a correction and the
+    // wrong spacing sits there indefinitely — exactly what read as "still
+    // misaligned on a normal view" despite every on-demand re-check (which
+    // opening DevTools itself nudges into re-running) coming back exact.
+    // These timers are a deliberately unconditional safety net against
+    // that class of timing gap, whatever its precise cause on a given
+    // device.
+    const timers = [100, 400, 1200, 3000].map((ms) => window.setTimeout(sync, ms));
+
+    return () => {
+      ro.disconnect();
+      timers.forEach((t) => window.clearTimeout(t));
+    };
   }, []);
 
   return (
