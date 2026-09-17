@@ -90,7 +90,16 @@ export function LogoLockup({ size = "nav" }: { size?: "nav" | "footer" }) {
         className={isFooter ? "h-9 w-[2px] bg-ivory/45" : "h-8 w-[2px] bg-ivory/45"}
         aria-hidden="true"
       />
-      <span className="flex flex-col font-sans leading-tight text-ivory">
+      {/* items-start is load-bearing: flex-col's default align-items is
+          stretch, which would force the "Sarvagun" span's box to the
+          container's full width (matching "Architects Studio") regardless
+          of its own text content — meaning the JS measurement below would
+          always read naturalWidth === targetWidth already (box-equal, not
+          content-equal) and compute zero extra spacing needed, silently
+          no-op'ing the whole fix. items-start makes every child shrink-wrap
+          to its own intrinsic content width instead, so getBoundingClientRect
+          actually reflects the rendered text's real width. */}
+      <span className="flex flex-col items-start font-sans leading-tight text-ivory">
         <span
           ref={sarvagunRef}
           className={
